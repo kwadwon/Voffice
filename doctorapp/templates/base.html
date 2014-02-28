@@ -16,7 +16,9 @@
 
     <!-- Custom styles for this template -->
     <!--<link href="dashboard.css" rel="stylesheet">-->
-    <link href="{% static "base.css" %}" rel="stylesheet">
+    <link href="{% static "css/base2.css" %}" rel="stylesheet">
+    <link href="{% static "css/base.css" %}" rel="stylesheet">
+
 
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -59,189 +61,238 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">Overview</a></li>
-            <li><a href="#">Reports</a></li>
-            <li><a href="#">Analytics</a></li>
-            <li><a href="#">Export</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="">Nav item</a></li>
-            <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
-            <li><a href="">Another nav item</a></li>
-            <li><a href="">More navigation</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
-            <li><a href="">Another nav item</a></li>
+            <li id="side_over_link" class="active"><a href="#">Overview</a></li>
+            <li id="side_os_link"><a href="#">Operating System</a></li>
+            <li id="side_app_link"><a href="#">Applications</a></li>
+            <li id="side_def_set_link"><a href="#">Default Settings</a></li>
+            <li id="side_sum_link"><a href="#">Summary</a></li>
           </ul>
         </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Dashboard</h1>
 
+        <!-- Overview Section -->
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="over_sect">
+          <div class="row placeholders">
+            <div class="col-xs-6 col-sm-6 placeholder">
+              <h1 class="page-header">Overview</h1>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <button type="button" class="btn btn-primary btn-lg btn-block next">Next</button>
+            </div>
+          </div>
+          <div class="row placeholders">
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <!--<img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">-->
+              <!--<img src="{% static "icons/computer_icon/icon_24026.png" %}" alt="Generate placeholder" class="img-responsive">-->
+              <img src="{% static "icons/application_icon/icon_29141.png" %}" alt="Generate placeholder" class="img-responsive">
+
+              <h4><a id="os_link" href="#">Operating System</a></h4>
+              <span class="text-muted">Pick your workspace operating system.</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <!--<img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">-->
+              <img src="{% static "icons/app_icon/icon_15177.png" %}" alt="Generate placeholder" class="img-responsive">
+              <h4><a id="app_link" href="#">Applications</a></h4>
+              <span class="text-muted">Select applications to pre-install.</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <!--<img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">-->
+              <img src="{% static "icons/settings_icon/icon_34727.png" %}" alt="Generate placeholder" class="img-responsive">
+              <h4><a id="def_set_link" href="#">Default Settings</a></h4>
+              <span class="text-muted">Set your default settings.</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <!--<img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">-->
+              <img src="{% static "icons/summary_icon/icon_16325.png" %}" alt="Generate placeholder" class="img-responsive">
+
+              <h4><a id="sum_link" href="#">Summary</a></h4>
+              <span class="text-muted">See detailed workspace summary.</span>
+            </div>
+          </div>
+          <p id="step_explanation" class="bg-info">
+            Select your operation system of choice. You can pick from multiple variations of Windows, OS X, and Linux.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ac tincidunt est. Maecenas scelerisque lacinia mauris, ut vulputate lacus ultricies a. Sed varius erat scelerisque tortor cursus, at pharetra odio commodo. Sed lacus nunc, elementum at convallis vitae, tempus blandit libero. Integer arcu lacus, ultricies vitae urna sit amet, placerat.
+          </p>        
+        </div>
+
+        <!-- Operating System Section -->
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="os_sect" style="display:none">
+          <div class="row placeholders">
+            <div class="col-xs-6 col-sm-6 placeholder">
+              <h1 class="page-header">Operating System</h1>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <button type="button" class="btn btn-primary btn-lg btn-block previous">Previous</button>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <button type="button" class="btn btn-primary btn-lg btn-block next">Next</button>
+            </div>
+          </div>
           <div class="row placeholders">
             <div class="col-xs-6 col-sm-3 placeholder">
               <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
+              <h4><a id="os_link" href="#">Windows 7</a></h4>
+              <span class="text-muted">Some interesting stuff about Windows 7</span>
             </div>
             <div class="col-xs-6 col-sm-3 placeholder">
               <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
+              <h4><a id="app_link" href="#">Windows 8</a></h4>
+              <span class="text-muted">Some interesting stuff about Windows 8</span>
             </div>
             <div class="col-xs-6 col-sm-3 placeholder">
               <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
+              <h4><a id="def_set_link" href="#">OS X Maverick</a></h4>
+              <span class="text-muted">SSome interesting stuff about OS X Maverick</span>
             </div>
             <div class="col-xs-6 col-sm-3 placeholder">
               <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
+              <h4><a id="sum_link" href="#">Ubuntu</a></h4>
+              <span class="text-muted">Some Interesting stuff about Ubuntu.</span>
             </div>
           </div>
-
-          <h2 class="sub-header">Section title</h2>
-          <div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1,001</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                  <td>dolor</td>
-                  <td>sit</td>
-                </tr>
-                <tr>
-                  <td>1,002</td>
-                  <td>amet</td>
-                  <td>consectetur</td>
-                  <td>adipiscing</td>
-                  <td>elit</td>
-                </tr>
-                <tr>
-                  <td>1,003</td>
-                  <td>Integer</td>
-                  <td>nec</td>
-                  <td>odio</td>
-                  <td>Praesent</td>
-                </tr>
-                <tr>
-                  <td>1,003</td>
-                  <td>libero</td>
-                  <td>Sed</td>
-                  <td>cursus</td>
-                  <td>ante</td>
-                </tr>
-                <tr>
-                  <td>1,004</td>
-                  <td>dapibus</td>
-                  <td>diam</td>
-                  <td>Sed</td>
-                  <td>nisi</td>
-                </tr>
-                <tr>
-                  <td>1,005</td>
-                  <td>Nulla</td>
-                  <td>quis</td>
-                  <td>sem</td>
-                  <td>at</td>
-                </tr>
-                <tr>
-                  <td>1,006</td>
-                  <td>nibh</td>
-                  <td>elementum</td>
-                  <td>imperdiet</td>
-                  <td>Duis</td>
-                </tr>
-                <tr>
-                  <td>1,007</td>
-                  <td>sagittis</td>
-                  <td>ipsum</td>
-                  <td>Praesent</td>
-                  <td>mauris</td>
-                </tr>
-                <tr>
-                  <td>1,008</td>
-                  <td>Fusce</td>
-                  <td>nec</td>
-                  <td>tellus</td>
-                  <td>sed</td>
-                </tr>
-                <tr>
-                  <td>1,009</td>
-                  <td>augue</td>
-                  <td>semper</td>
-                  <td>porta</td>
-                  <td>Mauris</td>
-                </tr>
-                <tr>
-                  <td>1,010</td>
-                  <td>massa</td>
-                  <td>Vestibulum</td>
-                  <td>lacinia</td>
-                  <td>arcu</td>
-                </tr>
-                <tr>
-                  <td>1,011</td>
-                  <td>eget</td>
-                  <td>nulla</td>
-                  <td>Class</td>
-                  <td>aptent</td>
-                </tr>
-                <tr>
-                  <td>1,012</td>
-                  <td>taciti</td>
-                  <td>sociosqu</td>
-                  <td>ad</td>
-                  <td>litora</td>
-                </tr>
-                <tr>
-                  <td>1,013</td>
-                  <td>torquent</td>
-                  <td>per</td>
-                  <td>conubia</td>
-                  <td>nostra</td>
-                </tr>
-                <tr>
-                  <td>1,014</td>
-                  <td>per</td>
-                  <td>inceptos</td>
-                  <td>himenaeos</td>
-                  <td>Curabitur</td>
-                </tr>
-                <tr>
-                  <td>1,015</td>
-                  <td>sodales</td>
-                  <td>ligula</td>
-                  <td>in</td>
-                  <td>libero</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <p id="step_explanation" class="bg-info">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tellus odio, luctus faucibus eros vitae, dignissim interdum mi. Ut dignissim posuere massa, non varius eros egestas in. Morbi adipiscing erat at sapien rhoncus, eget porttitor magna ornare. Donec ut sapien at neque aliquam tincidunt. Sed iaculis, tellus quis porttitor fringilla, tellus nisi ullamcorper dolor, non laoreet tortor quam et risus. Proin scelerisque tellus lacus, ac vehicula sem feugiat a. Etiam condimentum enim risus, quis fermentum turpis vestibulum nec. Curabitur lobortis nunc in dui eleifend, blandit volutpat turpis semper. Integer ultrices velit eget elit consectetur, vel tempor eros ultrices. Aenean molestie vel arcu quis aliquam. Integer auctor imperdiet sagittis. Vestibulum luctus nisi non dolor lobortis, et sodales odio euismod. Sed eu velit tincidunt orci laoreet fermentum eget vel risus. Ut porttitor orci a orci luctus feugiat.
+          </p>        
         </div>
+
+         <!-- Application Section -->
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="app_sect" style="display:none">
+          <div class="row placeholders">
+            <div class="col-xs-6 col-sm-6 placeholder">
+              <h1 class="page-header">Applications</h1>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <button type="button" class="btn btn-primary btn-lg btn-block previous">Previous</button>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <button type="button" class="btn btn-primary btn-lg btn-block next">Next</button>
+            </div>
+          </div>
+          <div class="row placeholders">
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4><a id="os_link" href="#">Med Pro 1</a></h4>
+              <span class="text-muted">Some interesting stuff about Med Pro 1</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4><a id="app_link" href="#">X-Ray Utility</a></h4>
+              <span class="text-muted">Some Interesting stuff about X-Ray Utility</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4><a id="def_set_link" href="#">Clinic Management</a></h4>
+              <span class="text-muted">Some interesting stuff abotu Clinit Management</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4><a id="sum_link" href="#">EHR Utility</a></h4>
+              <span class="text-muted">Some Interesting stuff EHR Utility.</span>
+            </div>
+          </div>
+          <p id="os_sect_text" class="bg-info" >
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tellus odio, luctus faucibus eros vitae, dignissim interdum mi. Ut dignissim posuere massa, non varius eros egestas in. Morbi adipiscing erat at sapien rhoncus, eget porttitor magna ornare. Donec ut sapien at neque aliquam tincidunt. Sed iaculis, tellus quis porttitor fringilla, tellus nisi ullamcorper dolor, non laoreet tortor quam et risus. Proin scelerisque tellus lacus, ac vehicula sem feugiat a. Etiam condimentum enim risus, quis fermentum turpis vestibulum nec. Curabitur lobortis nunc in dui eleifend, blandit volutpat turpis semper. Integer ultrices velit eget elit consectetur, vel tempor eros ultrices. Aenean molestie vel arcu quis aliquam. Integer auctor imperdiet sagittis. Vestibulum luctus nisi non dolor lobortis, et sodales odio euismod. Sed eu velit tincidunt orci laoreet fermentum eget vel risus. Ut porttitor orci a orci luctus feugiat.
+          </p>        
+        </div>
+
+        <!-- Default Settings Section -->
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="def_sect" style="display:none">
+          <div class="row placeholders">
+            <div class="col-xs-6 col-sm-6 placeholder">
+              <h1 class="page-header">Default Settings</h1>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <button type="button" class="btn btn-primary btn-lg btn-block previous">Previous</button>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <button type="button" class="btn btn-primary btn-lg btn-block next">Next</button>
+            </div>
+          </div>
+          <div class="row placeholders">
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4><a id="os_link" href="#">Username</a></h4>
+              <span class="text-muted">Some interesting stuff about picking a user name.</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4><a id="app_link" href="#">Password</a></h4>
+              <span class="text-muted">Some interesting stuff about picking a secure password</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4><a id="def_set_link" href="#">Colors</a></h4>
+              <span class="text-muted">Some interesting stuff about color preferences.</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4><a id="sum_link" href="#">Power Saving</a></h4>
+              <span class="text-muted">Some Interesting stuff about saving power.</span>
+            </div>
+          </div>
+          <p id="os_sect_text" class="bg-info" >
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tellus odio, luctus faucibus eros vitae, dignissim interdum mi. Ut dignissim posuere massa, non varius eros egestas in. Morbi adipiscing erat at sapien rhoncus, eget porttitor magna ornare. Donec ut sapien at neque aliquam tincidunt. Sed iaculis, tellus quis porttitor fringilla, tellus nisi ullamcorper dolor, non laoreet tortor quam et risus. Proin scelerisque tellus lacus, ac vehicula sem feugiat a. Etiam condimentum enim risus, quis fermentum turpis vestibulum nec. Curabitur lobortis nunc in dui eleifend, blandit volutpat turpis semper. Integer ultrices velit eget elit consectetur, vel tempor eros ultrices. Aenean molestie vel arcu quis aliquam. Integer auctor imperdiet sagittis. Vestibulum luctus nisi non dolor lobortis, et sodales odio euismod. Sed eu velit tincidunt orci laoreet fermentum eget vel risus. Ut porttitor orci a orci luctus feugiat.
+          </p>        
+        </div>
+
+        <!-- Summary Section -->
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="sum_sect" style="display:none">
+          <div class="row placeholders">
+            <div class="col-xs-6 col-sm-6 placeholder">
+              <h1 class="page-header">Summary</h1>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <button type="button" class="btn btn-primary btn-lg btn-block previous">Previous</button>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <button type="button" class="btn btn-primary btn-lg btn-block disabled">Confirm</button>
+            </div>
+          </div>
+          <div class="row placeholders">
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4><a id="os_link" href="#">Report 1</a></h4>
+              <span class="text-muted">Some interesting stuff about Report 1.</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4><a id="app_link" href="#">Report 2</a></h4>
+              <span class="text-muted">Some Interesting stuff about Report 2.</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4><a id="def_set_link" href="#">Report 3</a></h4>
+              <span class="text-muted">Some interesting stuff about Report 3.</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4><a id="sum_link" href="#">Report 4</a></h4>
+              <span class="text-muted">Some Interesting stuff about Report 4.</span>
+            </div>
+          </div>
+          <p id="os_sect_text" class="bg-info" >
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tellus odio, luctus faucibus eros vitae, dignissim interdum mi. Ut dignissim posuere massa, non varius eros egestas in. Morbi adipiscing erat at sapien rhoncus, eget porttitor magna ornare. Donec ut sapien at neque aliquam tincidunt. Sed iaculis, tellus quis porttitor fringilla, tellus nisi ullamcorper dolor, non laoreet tortor quam et risus. Proin scelerisque tellus lacus, ac vehicula sem feugiat a. Etiam condimentum enim risus, quis fermentum turpis vestibulum nec. Curabitur lobortis nunc in dui eleifend, blandit volutpat turpis semper. Integer ultrices velit eget elit consectetur, vel tempor eros ultrices. Aenean molestie vel arcu quis aliquam. Integer auctor imperdiet sagittis. Vestibulum luctus nisi non dolor lobortis, et sodales odio euismod. Sed eu velit tincidunt orci laoreet fermentum eget vel risus. Ut porttitor orci a orci luctus feugiat.
+          </p>        
+        </div>
+
       </div>
     </div>
+
+
+
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <!--<script src="../../dist/js/bootstrap.min.js"></script>-->
-    <script src="{% static "bootstrap/css/bootstrap.min.js" %}"></script>
+    <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
     <!--<script src="../../assets/js/docs.min.js"></script>-->
     <script src="{% static "js/bootstrap_asset.js" %}"></script>
+    <script src="{% static "js/base.js" %}"></script>
+
+
+
   </body>
 </html>
