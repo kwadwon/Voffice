@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>VOffice</title>
+    <title>PracticeUp</title>
 
     <!-- Bootstrap core CSS -->
     <!--<link href="../../dist/css/bootstrap.min.css" rel="stylesheet">-->
@@ -16,7 +16,10 @@
 
     <!-- Custom styles for this template -->
     <!--<link href="dashboard.css" rel="stylesheet">-->
-    <link href="{% static "base.css" %}" rel="stylesheet">
+    <link href="{% static "css/base2.css" %}" rel="stylesheet">
+    <link href="{% static "css/index.css" %}" rel="stylesheet">
+    <link href="{% static "css/hover.css" %}" rel="stylesheet">
+
 
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -39,17 +42,56 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">VOffice</a>
+          <a class="navbar-brand" href="#" style="color:white;font-size:25px;">PracticeUp</a>
         </div>
         <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">About Us</a></li>
+          <ul class="nav navbar-nav navbar-right" style="color:yellow;">
             <li><a href="#">Solutions</a></li>
+            <li><a href="#">Benefits</a></li>
+            <li><a href="#">Billing</a></li>
             <li><a href="#">Help</a></li>
+            <li><a href="/doctorapp/signup">Sign Up</a></li>
+            <li><a href="/doctorapp/login">Login</a></li>
           </ul>
         </div>
       </div>
     </div>
+    <div class="container-fluid" style="padding:0;">
+      <div id="main_pic_1" class="coverphoto" style="background-image:url({% static "images/smile.jpg" %})">
+        <div class="pretty_text">
+          Spend your time doing what really matters, bring smiles to your patients.
+        </div>
+      </div>
+      <div id="filler_1" class="photofiller">
+          <span> 1 Easy Solution</span>
+          <span>200,000 Dental Professionals</span>
+          <span>2,210,000 Smiling Patients</span>
+      </div>
+      <div id="main_pic_2" class="coverphoto" style="background-image:url({% static "images/devicedoc.jpg" %})">
+        <div class="pretty_text">
+          Access patient data and records from any location on any device.
+        </div>
+      </div>
+      <div id="filler_2" class="photofiller">
+          <span>Access on your cell phone</span>
+          <span>Access on your tablet</span>
+          <span>Access on your desktop</span>
+      </div>
+      <div id="main_pic_3" class="coverphoto" style="background-image:url({% static "images/support.jpeg" %})">
+          <div class="pretty_text">
+            Get on demand and reliable expert assistance.
+          </div>
+      </div>
+      <div id="filler_3" class="photofiller">
+          <span>More Reliable</span>
+          <span>24/7 customer assistance</span>
+          <span>Auto backup</span>
+      </div>
+      <div id="footer">
+      </div>
+    </div>
+
+
 
 
 

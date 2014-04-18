@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>VOffice</title>
+    <title>PracticeUp</title>
 
     <!-- Bootstrap core CSS -->
     <!--<link href="../../dist/css/bootstrap.min.css" rel="stylesheet">-->
@@ -18,6 +18,10 @@
     <!--<link href="dashboard.css" rel="stylesheet">-->
     <link href="{% static "css/base2.css" %}" rel="stylesheet">
     <link href="{% static "css/base.css" %}" rel="stylesheet">
+    <link href="{% static "css/hover.css" %}" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+
+
 
 
     <!-- Just for debugging purposes. Don't actually copy this line! -->
@@ -41,18 +45,17 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">VOffice</a>
+          <a class="navbar-brand" href="/doctorapp/" style="color:white;font-size:25px;">PracticeUp</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Dashboard</a></li>
+            <li><a href="/doctorapp/dashboard">Dashboard</a></li>
             <li><a href="#">Settings</a></li>
             <li><a href="#">Profile</a></li>
             <li><a href="#">Help</a></li>
+            <li><a href="/doctorapp/logout">Log out</a></li>
           </ul>
-          <form class="navbar-form navbar-right">
-            <input type="text" class="form-control" placeholder="Search...">
-          </form>
+          
         </div>
       </div>
     </div>
@@ -62,9 +65,8 @@
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li id="side_over_link" class="active"><a href="#">Overview</a></li>
-            <li id="side_os_link"><a href="#">Operating System</a></li>
             <li id="side_app_link"><a href="#">Applications</a></li>
-            <li id="side_def_set_link"><a href="#">Default Settings</a></li>
+            <li id="side_os_link"><a href="#">Operating System</a></li>
             <li id="side_sum_link"><a href="#">Summary</a></li>
           </ul>
         </div>
@@ -78,81 +80,78 @@
             <div class="col-xs-6 col-sm-3 placeholder">
             </div>
             <div class="col-xs-6 col-sm-3 placeholder">
-              <button type="button" class="btn btn-primary btn-lg btn-block next">Next</button>
+              <button type="button" class="btn btn-primary btn-lg btn-block next trim">Next</button>
             </div>
           </div>
           <div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <!--<img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">-->
-              <!--<img src="{% static "icons/computer_icon/icon_24026.png" %}" alt="Generate placeholder" class="img-responsive">-->
-              <img src="{% static "icons/application_icon/icon_29141.png" %}" alt="Generate placeholder" class="img-responsive">
-
-              <h4><a id="os_link" href="#">Operating System</a></h4>
-              <span class="text-muted">Pick your workspace operating system.</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
+            <div id="app_link" class="col-xs-6 col-sm-3 placeholder rounded  float-shadow">
               <!--<img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">-->
-              <img src="{% static "icons/app_icon/icon_15177.png" %}" alt="Generate placeholder" class="img-responsive">
-              <h4><a id="app_link" href="#">Applications</a></h4>
+              <img src="{% static "icons/appchoices.jpg" %}" alt="Generate placeholder" class="img-responsive">
+              <h4>Applications</h4>
               <span class="text-muted">Select applications to pre-install.</span>
             </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
+            <div id="os_link" class="col-xs-6 col-sm-3 placeholder rounded  float-shadow">
               <!--<img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">-->
-              <img src="{% static "icons/settings_icon/icon_34727.png" %}" alt="Generate placeholder" class="img-responsive">
-              <h4><a id="def_set_link" href="#">Default Settings</a></h4>
-              <span class="text-muted">Set your default settings.</span>
+              <!--<img src="{% static "icons/computer_icon/icon_24026.png" %}" alt="Generate placeholder" class="img-responsive">-->
+              <img src="{% static "icons/winmac.jpg" %}" alt="Generate placeholder" class="img-responsive">
+              <h4>Operating System</h4>
+              <span class="text-muted">Pick your workspace operating system.</span>
             </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
+            
+            <div id="sum_link" class="col-xs-6 col-sm-3 placeholder rounded  float-shadow">
               <!--<img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">-->
-              <img src="{% static "icons/summary_icon/icon_16325.png" %}" alt="Generate placeholder" class="img-responsive">
+              <img src="{% static "icons/summary.jpg" %}" alt="Generate placeholder" class="img-responsive">
 
-              <h4><a id="sum_link" href="#">Summary</a></h4>
+              <h4>Summary</h4>
               <span class="text-muted">See detailed workspace summary.</span>
             </div>
           </div>
-          <p id="step_explanation" class="bg-info">
-            Select your operation system of choice. You can pick from multiple variations of Windows, OS X, and Linux.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ac tincidunt est. Maecenas scelerisque lacinia mauris, ut vulputate lacus ultricies a. Sed varius erat scelerisque tortor cursus, at pharetra odio commodo. Sed lacus nunc, elementum at convallis vitae, tempus blandit libero. Integer arcu lacus, ultricies vitae urna sit amet, placerat.
+          <p id="step_explanation" class="text-info">
+            Select your operation system of choice. You can pick from multiple variations of Windows, OS X, and Linux. 
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ac tincidunt est. Maecenas scelerisque 
+            lacinia mauris, ut vulputate lacus ultricies a. Sed varius erat scelerisque tortor cursus, at pharetra odio commodo. Sed lacus nunc, elementum at convallis vitae, tempus blandit libero. Integer arcu lacus, "+
+            ultricies vitae urna sit amet, placerat.
           </p>        
         </div>
 
         <!-- Operating System Section -->
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="os_sect" style="display:none">
           <div class="row placeholders">
-            <div class="col-xs-6 col-sm-6 placeholder">
+            <div class="col-xs-6 col-sm-6 placeholder ">
               <h1 class="page-header">Operating System</h1>
             </div>
             <div class="col-xs-6 col-sm-3 placeholder">
-              <button type="button" class="btn btn-primary btn-lg btn-block previous">Previous</button>
+              <button type="button" class="btn btn-primary btn-lg btn-block previous trim">Previous</button>
             </div>
             <div class="col-xs-6 col-sm-3 placeholder">
-              <button type="button" class="btn btn-primary btn-lg btn-block next">Next</button>
+              <button type="button" class="btn btn-primary btn-lg btn-block next trim">Next</button>
             </div>
           </div>
           <div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4><a id="os_link" href="#">Windows 7</a></h4>
-              <span class="text-muted">Some interesting stuff about Windows 7</span>
+            <div id="os_1" class="col-xs-6 col-sm-3 placeholder rounded card  float-shadow">
+              <img src="{% static "icons/win7.jpg" %}" alt="Generate placeholder" class="img-responsive">
+              <h4>Windows 7</h4>
+              <span class="text-muted">A true Windows 7 experience</span>
             </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4><a id="app_link" href="#">Windows 8</a></h4>
-              <span class="text-muted">Some interesting stuff about Windows 8</span>
+            <div id="os_2" class="col-xs-6 col-sm-3 placeholder rounded card float-shadow">
+              <img src="{% static "icons/win8.jpg" %}" alt="Generate placeholder" class="img-responsive">
+              <h4>Windows 8</h4>
+              <span class="text-muted">Microsoft's latest OS, Windows 8</span>
             </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4><a id="def_set_link" href="#">OS X Maverick</a></h4>
-              <span class="text-muted">SSome interesting stuff about OS X Maverick</span>
+            <div id="os_3" class="col-xs-6 col-sm-3 placeholder rounded card float-shadow">
+              <img src="{% static "icons/osx.jpg" %}" alt="Generate placeholder" class="img-responsive">
+              <h4>OS X Maverick</h4>
+              <span class="text-muted">Apple's revolutionary OS X Maverick</span>
             </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4><a id="sum_link" href="#">Ubuntu</a></h4>
-              <span class="text-muted">Some Interesting stuff about Ubuntu.</span>
+            <div id="os_4" class="col-xs-6 col-sm-3 placeholder rounded card float-shadow">
+              <img src="{% static "icons/ubuntu.png" %}" alt="Generate placeholder" class="img-responsive">
+              <h4>Ubuntu</h4>
+              <span class="text-muted">A true Ubuntu experience</span>
             </div>
+            <input type="hidden" id="os_selection" value="W7">
           </div>
-          <p id="step_explanation" class="bg-info">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tellus odio, luctus faucibus eros vitae, dignissim interdum mi. Ut dignissim posuere massa, non varius eros egestas in. Morbi adipiscing erat at sapien rhoncus, eget porttitor magna ornare. Donec ut sapien at neque aliquam tincidunt. Sed iaculis, tellus quis porttitor fringilla, tellus nisi ullamcorper dolor, non laoreet tortor quam et risus. Proin scelerisque tellus lacus, ac vehicula sem feugiat a. Etiam condimentum enim risus, quis fermentum turpis vestibulum nec. Curabitur lobortis nunc in dui eleifend, blandit volutpat turpis semper. Integer ultrices velit eget elit consectetur, vel tempor eros ultrices. Aenean molestie vel arcu quis aliquam. Integer auctor imperdiet sagittis. Vestibulum luctus nisi non dolor lobortis, et sodales odio euismod. Sed eu velit tincidunt orci laoreet fermentum eget vel risus. Ut porttitor orci a orci luctus feugiat.
+          <p id="os_step_explanation" class="text-info">
+            Some very very very interestin stuff to say about windows 7. And then the rest is just going randomness. adipiscing elit. Cras ac tincidunt est. Maecenas scelerisque lacinia mauris, ut vulputate lacus ultricies a. Sed varius erat scelerisque tortor cursus, at pharetra odio commodo. Sed lacus nunc, elementum at convallis vitae, tempus blandit libero. Integer arcu lacus, ultricies vitae urna sit amet, placerat.
           </p>        
         </div>
 
@@ -163,76 +162,36 @@
               <h1 class="page-header">Applications</h1>
             </div>
             <div class="col-xs-6 col-sm-3 placeholder">
-              <button type="button" class="btn btn-primary btn-lg btn-block previous">Previous</button>
+              <button type="button" class="btn btn-primary btn-lg btn-block previous trim">Previous</button>
             </div>
             <div class="col-xs-6 col-sm-3 placeholder">
-              <button type="button" class="btn btn-primary btn-lg btn-block next">Next</button>
+              <button type="button" class="btn btn-primary btn-lg btn-block next trim">Next</button>
             </div>
           </div>
           <div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4><a id="os_link" href="#">Med Pro 1</a></h4>
-              <span class="text-muted">Some interesting stuff about Med Pro 1</span>
+            <div id="app_1" class="col-xs-6 col-sm-3 placeholder rounded card float-shadow">
+              <img src="{% static "icons/app1.png" %}" alt="Generate placeholder" class="img-responsive">
+              <h4><a id="os_link" href="#">Schedule Assistant</a></h4>
+              <span class="text-muted">Industry leading scheduling software</span>
             </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
+            <div id="app_2" class="col-xs-6 col-sm-3 placeholder rounded card float-shadow">
+              <img src="{% static "icons/app2.jpg" %}" alt="Generate placeholder" class="img-responsive">
               <h4><a id="app_link" href="#">X-Ray Utility</a></h4>
-              <span class="text-muted">Some Interesting stuff about X-Ray Utility</span>
+              <span class="text-muted">Industry standard for X-Ray software</span>
             </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4><a id="def_set_link" href="#">Clinic Management</a></h4>
-              <span class="text-muted">Some interesting stuff abotu Clinit Management</span>
+            <div id="app_3" class="col-xs-6 col-sm-3 placeholder rounded card float-shadow">
+              <img src="{% static "icons/app3.jpg" %}" alt="Generate placeholder" class="img-responsive">
+              <h4><a id="def_set_link" href="#">Clinix Management</a></h4>
+              <span class="text-muted">Industry standard for the office </span>
             </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
+            <div id="app_4" class="col-xs-6 col-sm-3 placeholder rounded card float-shadow">
+              <img src="{% static "icons/app4.jpg" %}" alt="Generate placeholder" class="img-responsive">
               <h4><a id="sum_link" href="#">EHR Utility</a></h4>
-              <span class="text-muted">Some Interesting stuff EHR Utility.</span>
+              <span class="text-muted">Manage patient data</span>
             </div>
           </div>
-          <p id="os_sect_text" class="bg-info" >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tellus odio, luctus faucibus eros vitae, dignissim interdum mi. Ut dignissim posuere massa, non varius eros egestas in. Morbi adipiscing erat at sapien rhoncus, eget porttitor magna ornare. Donec ut sapien at neque aliquam tincidunt. Sed iaculis, tellus quis porttitor fringilla, tellus nisi ullamcorper dolor, non laoreet tortor quam et risus. Proin scelerisque tellus lacus, ac vehicula sem feugiat a. Etiam condimentum enim risus, quis fermentum turpis vestibulum nec. Curabitur lobortis nunc in dui eleifend, blandit volutpat turpis semper. Integer ultrices velit eget elit consectetur, vel tempor eros ultrices. Aenean molestie vel arcu quis aliquam. Integer auctor imperdiet sagittis. Vestibulum luctus nisi non dolor lobortis, et sodales odio euismod. Sed eu velit tincidunt orci laoreet fermentum eget vel risus. Ut porttitor orci a orci luctus feugiat.
-          </p>        
-        </div>
-
-        <!-- Default Settings Section -->
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="def_sect" style="display:none">
-          <div class="row placeholders">
-            <div class="col-xs-6 col-sm-6 placeholder">
-              <h1 class="page-header">Default Settings</h1>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <button type="button" class="btn btn-primary btn-lg btn-block previous">Previous</button>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <button type="button" class="btn btn-primary btn-lg btn-block next">Next</button>
-            </div>
-          </div>
-          <div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4><a id="os_link" href="#">Username</a></h4>
-              <span class="text-muted">Some interesting stuff about picking a user name.</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4><a id="app_link" href="#">Password</a></h4>
-              <span class="text-muted">Some interesting stuff about picking a secure password</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4><a id="def_set_link" href="#">Colors</a></h4>
-              <span class="text-muted">Some interesting stuff about color preferences.</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4><a id="sum_link" href="#">Power Saving</a></h4>
-              <span class="text-muted">Some Interesting stuff about saving power.</span>
-            </div>
-          </div>
-          <p id="os_sect_text" class="bg-info" >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tellus odio, luctus faucibus eros vitae, dignissim interdum mi. Ut dignissim posuere massa, non varius eros egestas in. Morbi adipiscing erat at sapien rhoncus, eget porttitor magna ornare. Donec ut sapien at neque aliquam tincidunt. Sed iaculis, tellus quis porttitor fringilla, tellus nisi ullamcorper dolor, non laoreet tortor quam et risus. Proin scelerisque tellus lacus, ac vehicula sem feugiat a. Etiam condimentum enim risus, quis fermentum turpis vestibulum nec. Curabitur lobortis nunc in dui eleifend, blandit volutpat turpis semper. Integer ultrices velit eget elit consectetur, vel tempor eros ultrices. Aenean molestie vel arcu quis aliquam. Integer auctor imperdiet sagittis. Vestibulum luctus nisi non dolor lobortis, et sodales odio euismod. Sed eu velit tincidunt orci laoreet fermentum eget vel risus. Ut porttitor orci a orci luctus feugiat.
+          <p id="app_step_explanation" class="text-info" >
+            Dental Scheduler is the leading software for scheduling appointments adipiscing elit. Cras ac tincidunt est. Maecenas scelerisque lacinia mauris, ut vulputate lacus ultricies a. Sed varius erat scelerisque tortor cursus, at pharetra odio commodo. Sed lacus nunc, elementum at convallis vitae, tempus blandit libero. Integer arcu lacus, ultricies vitae urna sit amet, placerat.
           </p>        
         </div>
 
@@ -243,44 +202,47 @@
               <h1 class="page-header">Summary</h1>
             </div>
             <div class="col-xs-6 col-sm-3 placeholder">
-              <button type="button" class="btn btn-primary btn-lg btn-block previous">Previous</button>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <button type="button" class="btn btn-primary btn-lg btn-block disabled">Confirm</button>
+              <button type="button" class="btn btn-primary btn-lg btn-block previous trim">Previous</button>
             </div>
           </div>
           <div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4><a id="os_link" href="#">Report 1</a></h4>
-              <span class="text-muted">Some interesting stuff about Report 1.</span>
+            <div id="sum_2" class="col-xs-6 col-sm-3 placeholder rounded card float-shadow">
+              <img src="{% static "icons/appchoices.jpg" %}" alt="Generate placeholder" class="img-responsive">
+              <h4>Your Applications</h4>
+              <span class="text-muted">More details on applications</span>
             </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4><a id="app_link" href="#">Report 2</a></h4>
-              <span class="text-muted">Some Interesting stuff about Report 2.</span>
+            <div id="sum_1" class="col-xs-6 col-sm-3 placeholder rounded card float-shadow">
+              <img src="{% static "icons/winmac.jpg" %}" alt="Generate placeholder" class="img-responsive">
+              <h4>Your Operating System</h4>
+              <span class="text-muted">More details about your OS choice</span>
             </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4><a id="def_set_link" href="#">Report 3</a></h4>
-              <span class="text-muted">Some interesting stuff about Report 3.</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4><a id="sum_link" href="#">Report 4</a></h4>
-              <span class="text-muted">Some Interesting stuff about Report 4.</span>
+            <div  class="col-xs-6 col-sm-6 ">
+              <div id="progressbar"></div>
             </div>
           </div>
-          <p id="os_sect_text" class="bg-info" >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tellus odio, luctus faucibus eros vitae, dignissim interdum mi. Ut dignissim posuere massa, non varius eros egestas in. Morbi adipiscing erat at sapien rhoncus, eget porttitor magna ornare. Donec ut sapien at neque aliquam tincidunt. Sed iaculis, tellus quis porttitor fringilla, tellus nisi ullamcorper dolor, non laoreet tortor quam et risus. Proin scelerisque tellus lacus, ac vehicula sem feugiat a. Etiam condimentum enim risus, quis fermentum turpis vestibulum nec. Curabitur lobortis nunc in dui eleifend, blandit volutpat turpis semper. Integer ultrices velit eget elit consectetur, vel tempor eros ultrices. Aenean molestie vel arcu quis aliquam. Integer auctor imperdiet sagittis. Vestibulum luctus nisi non dolor lobortis, et sodales odio euismod. Sed eu velit tincidunt orci laoreet fermentum eget vel risus. Ut porttitor orci a orci luctus feugiat.
-          </p>        
+          <p id="sum_step_explanation" class="text-info" style="display:None">
+          </p> 
+          <div class="col-xs-6 col-sm-6 placeholder">
+            <!--<form action="http://10.33.45.4:8080/com.voffice.server/AWSActions" method="POST">
+              <input type="hidden" name="todo" value="start">
+              Instance Name: 
+              <input type="text" name="name" >
+              <br>
+              <input type="hidden" min="1" name="count" value="1">
+              <br>
+              <input id="build" class="btn btn-primary btn-lg btn-block disabled trim" type="submit" value="Start Instances">
+            </form>-->
+            <p>Workstation Name (user comma separated list for multiple workstations):</p>
+            <input size=83 type="text" name="name" id="machinenames">
+            <br> 
+            <br>
+            <button type="button" id="build" class="btn btn-primary btn-lg btn-block disabled trim">Create Workstations</button>
+          </div>       
         </div>
 
       </div>
+
     </div>
-
-
-
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -291,6 +253,7 @@
     <!--<script src="../../assets/js/docs.min.js"></script>-->
     <script src="{% static "js/bootstrap_asset.js" %}"></script>
     <script src="{% static "js/base.js" %}"></script>
+    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
 
 

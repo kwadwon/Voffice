@@ -4,3 +4,24 @@
 .navbar {
 	background-color:#3576BE;
 }
+
+.card {
+	cursor: pointer;
+	cursor: hand;
+}
+
+.card:hover{
+	
+}
+
+.blueBackground{
+	background-color:#d9edf7;
+}
+
+.rounded {
+	border-radius: 20px; -webkit-border-radius: 20px; -moz-border-radius: 20px;
+}
+
+.text-info{
+	border:solid 4px #d9edf7;
+}
