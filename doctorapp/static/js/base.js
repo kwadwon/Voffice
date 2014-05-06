@@ -23,9 +23,6 @@ $(document).ready(function(){
 	});
 
 	$("#over_sect .next").click(function(){
-		displayNoneSection();
-		side_os_link.addClass("active");
-		os_sect.show()
 
 		//new stuff
 		displayNoneSection();
@@ -37,12 +34,10 @@ $(document).ready(function(){
 		displayNoneSection();
 		side_os_link.addClass("active");
 		os_sect.show()
+		getRecommendedOS();
 	});
 
 	$("#os_sect .previous").click(function(){
-		displayNoneSection();
-		side_over_link.addClass("active");
-		over_sect.show();
 
 		//new stuff
 		displayNoneSection();
@@ -51,9 +46,6 @@ $(document).ready(function(){
 	});
 
 	$("#os_sect .next").click(function(){
-		displayNoneSection();
-		side_app_link.addClass("active");
-		app_sect.show();
 
 		//new stuff
 		displayNoneSection();
@@ -68,9 +60,6 @@ $(document).ready(function(){
 	});
 
 	$("#app_sect .previous").click(function(){
-		displayNoneSection();
-		side_os_link.addClass("active");
-		os_sect.show();
 
 		//new stuff
 		displayNoneSection();
@@ -79,14 +68,12 @@ $(document).ready(function(){
 	});
 
 	$("#app_sect .next").click(function(){
-		displayNoneSection();
-		side_sum_link.addClass("active");
-		sum_sect.show();
 
 		//new stuff
 		displayNoneSection();
 		side_os_link.addClass("active");
 		os_sect.show()
+		getRecommendedOS();
 	});
 
 
@@ -98,10 +85,7 @@ $(document).ready(function(){
 	})
 
 	$("#sum_sect .previous").click(function(){
-		displayNoneSection();
-		side_app_link.addClass("active");
-		app_sect.show();
-
+		
 		//new stuff
 		displayNoneSection();
 		side_os_link.addClass("active");
@@ -359,20 +343,50 @@ $(document).ready(function(){
 
 	};
 
+	var getSumOfAppsDesired = function(){
+		var theSum = 0
+		for(var i=0;i<apps_desired.length;i++){
+			theSum += apps_desired[i];
+		}
+		return theSum;
+	};
+	var getRecommendedOS = function(){
+		var appSelected = getSumOfAppsDesired();
+		if ((appSelected  > 0) && (appSelected  < 3)) {
+			$("#os_step_info").text("Based on the selected applications, Windows 7 has been selected as your default system. Click 'Next' to keep these settings.");
+			os1.trigger("click");
+		}
+
+		else if(appSelected  == 3 ){
+			$("#os_step_info").text("Based on the selected applications, Windows 8 has been selected as your default system. Click 'Next' to keep these settings." );
+			os2.trigger("click");
+		}
+
+		else if(appSelected  > 3 ){
+			$("#os_step_info").text("Based on the selected applications, OS X Mavericks has been selected as your default system. Click 'Next to keep these settings.");
+			os3.trigger("click");
+		}
+
+		else {
+			$("#os_step_info").text("");
+		}
+
+	};
+
 	
 
 	var instancesFinishedCreating = 0;
 	//when build button is clicked
 	$("#build").click(function(){
-		var build = confirm("Ready to start up your new Instance(s)?");
+		var build = confirm("Ready to start up your new Workstations(s)?");
 		if (build){
 			var names_insts = ($("#machinenames").val()).split(",");
 			$.each(names_insts, function(index,value){
-				$.post("http://ec2-54-187-87-86.us-west-2.compute.amazonaws.com/com.voffice.server/AWSActions",
+				$.post("http://ec2-54-187-107-236.us-west-2.compute.amazonaws.com/com.voffice.server/AWSActions",
 				{todo:"start",name:value,count:1});
 			});
 			// being progress bar
-			setTimeout(function(){console.log('ok');window.location = "/doctorapp/dashboard";}, 1000)
+			setTimeout(function(){console.log('machine started ok');window.location = "/doctorapp/dashboard";}, 1000)
 		}
 	});
 
@@ -390,42 +404,111 @@ $(document).ready(function(){
 			alert(data);
 		},"jsonp");*/
 
-	function deleteWorkstation(){
-
+	function deleteWorkstation(stationID){
+		$.post("http://ec2-54-187-107-236.us-west-2.compute.amazonaws.com/com.voffice.server/AWSActions", 
+			{todo:"terminate", list:stationID});
 	}
+
+	var dialogTextForClone = '<div><p>Workstation name</p>'+
+            '<input type="text" id="clone_name">'+
+            '<p>How many?</p>'+
+            '<input type="number" id="clone_number" min="0"></div>';
 
 	function callMe(data, status){
 		console.log(data);
 		$.each(data, function(index, value){
 			var nameData = "<td>"+value["_name"]+"</td>";
-			var idData = "<td>"+value["_id"]+"</td>";
+			var idData = "<td>"+value["_id"]+"</td>"; //will eventually be set to uptime
+			var uptime = "<td>many hours..stay tuned</td>";
 			var ipData = "<td>"+value["_ip"]+"</td>";
-			var keyData = "<td>"+value["_privateKey"]+"</td>";
-			var newRow = $("<tr id="+value["_id"]+">"+nameData+idData+ipData+keyData+"</tr>");
+			var newRow = $("<tr id="+value["_id"]+">"+nameData+ipData+uptime+"</tr>");
+			newRow.css("cursor","pointer");
+			// make machines with undefined ip unclickable
+			if(value["_ip"]==undefined){
+				newRow.css("pointer-events","none");
+			}
+			else{
+				newRow.css("background-color","#98AFC7");
+			}
+
 			newRow.click(function(e){
-			     $( "#dialog-confirm" ).dialog({
+			     var myID = $(this).attr("id");
+			     $("#dialog-confirm" ).dialog({
 			      resizable: false,
-			      width:500,
+			      width:625,
 			      height:140,
 			      modal: true,
 			      buttons: {
-			        "Pause Workstation": function() {
-			        	//do ajax call to stop machine
+			      	"Add Application": function(){
+			          $( this ).dialog( "close" );
+			      	},
+			      	"Clone Workstation": function() {
+			        	//do ajax call to terminate machine
+			        	console.log(myID);
+			        	console.log("cloning");
+			        	//cloning dialog box
+			        		$("#dialog-confirm-clone").dialog({
+						      resizable: false,
+						      width:500,
+						      height:250,
+						      modal: true,
+						      open:function(){
+						      	$(this).html(dialogTextForClone);
+						      	updateDialogCss();
+						      },
+						      buttons:{
+						      	"Create Workstation(s)": function(){
+						      		//grab input data and create new workstations
+						      		var name = $("#clone_name").val();
+						      		var number = $("#clone_number").val();
+						      		console.log(name);
+						      		console.log(number);
+						      		$.post("http://ec2-54-187-107-236.us-west-2.compute.amazonaws.com/com.voffice.server/AWSActions",
+									{todo:"start",name:name,count:number});
+						      		$( this ).dialog( "close" );
+						      		setTimeout(function(){console.log('machine started ok');window.location = "/doctorapp/dashboard";}, 1500)
+						      	},
+						      	"Cancel": function() {
+						          $( this ).dialog( "close" );
+						        }
+						      }
+						  });
+
+
+			        	//end cloning dialog box
 			          $( this ).dialog( "close" );
 			        },
 			        "Delete Workstation": function() {
 			        	//do ajax call to terminate machine
-			        	e.currentTarget.remove();
+			        	console.log(myID);
+			        	console.log("deleting");
+			        	deleteWorkstation(myID);
+			        	//e.currentTarget.remove();
 			          $( this ).dialog( "close" );
+		      			setTimeout(function(){console.log('machine deleted ok');window.location = "/doctorapp/dashboard";}, 500)
 			        }, 
 			        "Cancel": function() {
 			          $( this ).dialog( "close" );
 			        }
 			      }
 			    });
+			     //remove certain jquery ui classes to get desired color
+			     updateDialogCss();
+
 			});
 			$("#myInstances").append(newRow);
 		});		
+	}
+
+	var updateDialogCss = function(){
+		var dlog = $("div.ui-dialog-titlebar.ui-widget-header.ui-corner-all.ui-helper-clearfix");
+	     dlog.removeClass("ui-dialog-titlebar");
+	     dlog.removeClass("ui-widget-header");
+	     dlog.css("background-color","#3576BE");
+	     dlog.css("padding-left","10px");
+	     dlog.css("font-size","20px");
+	     dlog.css("color", "white");
+	     dlog.children("button").remove();
 	}
 
 	function listInstances(data, status){
@@ -437,8 +520,7 @@ $(document).ready(function(){
 	}
 
 	$.ajax({
-	  //url: "http://10.33.45.4:8080/com.voffice.server/AWSActions",
-	  url:"http://ec2-54-187-87-86.us-west-2.compute.amazonaws.com/com.voffice.server/AWSActions",
+	  url:"http://ec2-54-187-107-236.us-west-2.compute.amazonaws.com/com.voffice.server/AWSActions",
 	  jsonpCallback: "callMe",
 	  data: {todo:"instances", tocall:"listInstances"},
 	  success: callMe,
