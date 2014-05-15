@@ -37,3 +37,11 @@
 .notice{
 	font-size: 25px;
 }
+
+.navLink{
+	color:black !important;
+}
+
+.navLink:hover{
+	color:white !important;
+}
