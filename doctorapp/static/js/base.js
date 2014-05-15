@@ -156,7 +156,7 @@ $(document).ready(function(){
 
 	os1.click(function(){
 		removeBlueBackgroundOS();
-		$(this).addClass("blueBackground");
+		$(this).addClass("darkblueBackground");
 		os_selection = 1;
 		selection_check();
 
@@ -174,7 +174,7 @@ $(document).ready(function(){
 
 	os2.click(function(){
 		removeBlueBackgroundOS();
-		$(this).addClass("blueBackground");
+		$(this).addClass("darkblueBackground");
 		os_selection = 2;
 		selection_check();
 
@@ -192,7 +192,7 @@ $(document).ready(function(){
 
 	os3.click(function(){
 		removeBlueBackgroundOS();
-		$(this).addClass("blueBackground");
+		$(this).addClass("darkblueBackground");
 		os_selection = 3;
 		selection_check();
 
@@ -210,7 +210,7 @@ $(document).ready(function(){
 
 	os4.click(function(){
 		removeBlueBackgroundOS();
-		$(this).addClass("blueBackground");
+		$(this).addClass("darkblueBackground");
 		os_selection = 4;
 		selection_check();
 
@@ -350,6 +350,7 @@ $(document).ready(function(){
 		}
 		return theSum;
 	};
+	
 	var getRecommendedOS = function(){
 		var appSelected = getSumOfAppsDesired();
 		if ((appSelected  > 0) && (appSelected  < 3)) {
@@ -533,10 +534,10 @@ $(document).ready(function(){
 
 
 	var removeBlueBackgroundOS = function(){
-		os1.removeClass("blueBackground");
-		os2.removeClass("blueBackground");
-		os3.removeClass("blueBackground");
-		os4.removeClass("blueBackground");
+		os1.removeClass("darkblueBackground");
+		os2.removeClass("darkblueBackground");
+		os3.removeClass("darkblueBackground");
+		os4.removeClass("darkblueBackground");
 
 	};
 
