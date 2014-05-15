@@ -522,7 +522,7 @@ $(document).ready(function(){
 	$.ajax({
 	  url:"http://ec2-54-187-238-233.us-west-2.compute.amazonaws.com/com.voffice.server/AWSActions",
 	  jsonpCallback: "callMe",
-	  data: {todo:"instances", tocall:"listInstances"},
+	  data: {todo:"instances", tocall:"callMe"}, // formerly listInstances
 	  success: callMe,
 	  dataType: "jsonp"
 	});
