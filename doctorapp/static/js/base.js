@@ -382,7 +382,7 @@ $(document).ready(function(){
 		if (build){
 			var names_insts = ($("#machinenames").val()).split(",");
 			$.each(names_insts, function(index,value){
-				$.post("http://ec2-54-187-107-236.us-west-2.compute.amazonaws.com/com.voffice.server/AWSActions",
+				$.post("http://ec2-54-187-238-233.us-west-2.compute.amazonaws.com/com.voffice.server/AWSActions",
 				{todo:"start",name:value,count:1});
 			});
 			// being progress bar
@@ -405,7 +405,7 @@ $(document).ready(function(){
 		},"jsonp");*/
 
 	function deleteWorkstation(stationID){
-		$.post("http://ec2-54-187-107-236.us-west-2.compute.amazonaws.com/com.voffice.server/AWSActions", 
+		$.post("http://ec2-54-187-238-233.us-west-2.compute.amazonaws.com/com.voffice.server/AWSActions", 
 			{todo:"terminate", list:stationID});
 	}
 
@@ -463,7 +463,7 @@ $(document).ready(function(){
 						      		var number = $("#clone_number").val();
 						      		console.log(name);
 						      		console.log(number);
-						      		$.post("http://ec2-54-187-107-236.us-west-2.compute.amazonaws.com/com.voffice.server/AWSActions",
+						      		$.post("http://ec2-54-187-238-233.us-west-2.compute.amazonaws.com/com.voffice.server/AWSActions",
 									{todo:"start",name:name,count:number});
 						      		$( this ).dialog( "close" );
 						      		setTimeout(function(){console.log('machine started ok');window.location = "/doctorapp/dashboard";}, 1500)
@@ -520,7 +520,7 @@ $(document).ready(function(){
 	}
 
 	$.ajax({
-	  url:"http://ec2-54-187-107-236.us-west-2.compute.amazonaws.com/com.voffice.server/AWSActions",
+	  url:"http://ec2-54-187-238-233.us-west-2.compute.amazonaws.com/com.voffice.server/AWSActions",
 	  jsonpCallback: "callMe",
 	  data: {todo:"instances", tocall:"listInstances"},
 	  success: callMe,
