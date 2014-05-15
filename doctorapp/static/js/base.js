@@ -235,7 +235,7 @@ $(document).ready(function(){
 	});
 
 	app1.click(function(){
-		$(this).toggleClass("blueBackground");
+		$(this).toggleClass("darkblueBackground");
 		toggleAppSelection(0);
 		selection_check();
 	});
@@ -249,7 +249,7 @@ $(document).ready(function(){
 	});
 
 	app2.click(function(){
-		$(this).toggleClass("blueBackground");
+		$(this).toggleClass("darkblueBackground");
 		toggleAppSelection(1);
 		selection_check();
 	});
@@ -263,7 +263,7 @@ $(document).ready(function(){
 	});
 
 	app3.click(function(){
-		$(this).toggleClass("blueBackground");
+		$(this).toggleClass("darkblueBackground");
 		toggleAppSelection(2);
 		selection_check();
 	});

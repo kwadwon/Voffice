@@ -19,7 +19,11 @@
 }
 
 .darkblueBackground{
-	background-color: #0033FF;
+	background-color: #7AC5CD;
+}
+
+.blackText{
+	color:black;
 }
 
 .rounded {
