@@ -18,6 +18,10 @@
 	background-color:#d9edf7;
 }
 
+.darkblueBackground{
+	background-color: #0033FF;
+}
+
 .rounded {
 	border-radius: 20px; -webkit-border-radius: 20px; -moz-border-radius: 20px;
 }

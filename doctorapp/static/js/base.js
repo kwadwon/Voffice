@@ -277,7 +277,7 @@ $(document).ready(function(){
 	});
 
 	app4.click(function(){
-		$(this).toggleClass("blueBackground");
+		$(this).toggleClass("darkblueBackground");
 		toggleAppSelection(3);
 		selection_check();
 	});
